@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2016 Sogrey [https://github.com/Sogrey/WeiBo].
+ * IDE:Android Studio 2.1.1 + JDK 1.8
+ * QQ:408270653
+ * 仅供学习交流
+ * Copyright (c) Sogrey, All rights reserved.
+ */
+
 package org.sogrey.weibo.ui;
 
 import android.animation.Animator;
@@ -68,7 +76,6 @@ public class WelcomeActivity extends BaseActivity {
                 super.onAnimationEnd(animation);
                 //判断是不是第一次
                 boolean isFrist=(Boolean)SPUtils.get(mContext,Constants.SP_KEY_ISFRIST,true);
-                isFrist=true;
                 if (isFrist) {
                     startIntent(GuideActivity.class,R.anim.anim_alpha_in_center,R.anim
                             .anim_alpha_out_center,new OnStartIntentEndListener() {
@@ -94,5 +101,4 @@ public class WelcomeActivity extends BaseActivity {
         //启动动画
         anim.start();
     }
-
 }

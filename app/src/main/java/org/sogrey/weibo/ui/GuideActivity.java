@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2016 Sogrey [https://github.com/Sogrey/WeiBo].
+ * IDE:Android Studio 2.1.1 + JDK 1.8
+ * QQ:408270653
+ * 仅供学习交流
+ * Copyright (c) Sogrey, All rights reserved.
+ */
+
 package org.sogrey.weibo.ui;
 
 import android.support.v4.view.PagerAdapter;
@@ -6,7 +14,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,6 +59,7 @@ public class GuideActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
+                //当滑动到最后一页
                 if (position==mImageViewList.size()-1) {
                     mTxtHintClick.setVisibility(View.VISIBLE);
                 } else {
@@ -142,8 +150,8 @@ public class GuideActivity extends BaseActivity {
             img.setImageResource(mImageList.get(position));
             img.setScaleType(ImageView.ScaleType.CENTER_CROP);
             container.addView(img,new ViewGroup.LayoutParams(
-                    LayoutParams.MATCH_PARENT,
-                    LayoutParams.MATCH_PARENT
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
             ));
             return img;
         }
