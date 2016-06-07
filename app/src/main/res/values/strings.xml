@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeiBo</string>
+
+    <string name="hint_click_into_app">点击进入</string>
 </resources>

@@ -68,6 +68,7 @@ public class WelcomeActivity extends BaseActivity {
                 super.onAnimationEnd(animation);
                 //判断是不是第一次
                 boolean isFrist=(Boolean)SPUtils.get(mContext,Constants.SP_KEY_ISFRIST,true);
+                isFrist=true;
                 if (isFrist) {
                     startIntent(GuideActivity.class,R.anim.anim_alpha_in_center,R.anim
                             .anim_alpha_out_center,new OnStartIntentEndListener() {
@@ -89,7 +90,7 @@ public class WelcomeActivity extends BaseActivity {
             }
         });
         //设置动画时延
-        anim.setDuration(5000);
+        anim.setDuration(3000);
         //启动动画
         anim.start();
     }
