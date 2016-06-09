@@ -13,6 +13,7 @@ import android.content.Context;
 import org.sogrey.mvp.model.impl.MvpBaseModel;
 
 /**
+ * 本项目的MVP-Model
  * Created by Sogrey on 2016/6/9.
  */
 public abstract class MyBaseModel extends MvpBaseModel {

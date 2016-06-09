@@ -12,7 +12,7 @@ import org.sogrey.mvp.presenter.MvpPresenter;
 import org.sogrey.mvp.view.MvpView;
 
 /**
- * P层—— ——中介
+ * P层——关联——中介
  * Created by Sogrey on 2016/6/9.
  */
 public class MvpBasePresenter<V extends MvpView> implements MvpPresenter<V> {

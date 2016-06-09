@@ -12,6 +12,7 @@ import org.sogrey.mvp.view.MvpView;
 import org.sogrey.mvp.view.impl.MvpBaseLceView;
 
 /**
+ * 本项目的MVP-View
  * Created by Sogrey on 2016/6/9.
  */
 public abstract class MyBaseView<M extends MvpView> extends MvpBaseLceView<M> {

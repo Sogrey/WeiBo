@@ -14,7 +14,7 @@ import org.sogrey.mvp.presenter.impl.MvpBasePresenter;
 import org.sogrey.mvp.view.MvpView;
 
 /**
- * 本项目的MvpPresenter
+ * 本项目的Mvp-Presenter
  * Created by Sogrey on 2016/6/9.
  *
  * @param <V>

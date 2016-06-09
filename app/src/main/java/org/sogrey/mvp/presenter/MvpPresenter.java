@@ -9,6 +9,7 @@
 package org.sogrey.mvp.presenter;
 
 /**
+ * Presenter层是连接（或适配）View和Model的桥梁。<br/>
  * Created by Sogrey on 2016/6/8.
  *
  * @param <V>
