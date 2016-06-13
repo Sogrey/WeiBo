@@ -4,5 +4,19 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#999999</color>
+    <color name="dark_gray">#666666</color>
+    <color name="bg_view">@color/white</color>
+    <color name="bg_space">#FFDEE1E3</color>
+    <color name="bg_main_contentview">#10000000</color>
+    <color name="bg_main_tab">#11000000</color>
+    <color name="app_text_orage_color">#FF8200</color>
+    <color name="app_text_orage_deep_color">#E07604</color>
+    <color name="tabbar_compose_mornal_color">@color/app_text_orage_color</color>
+    <color name="tabbar_compose_press_color">@color/app_text_orage_deep_color</color>
+    <color name="tabbar_textcolor_normal">#847D7D</color>
+    <color name="tabbar_textcolor_pressed">@color/app_text_orage_deep_color</color>
+    <color name="txt_orange_color">#fc852a</color>
 
 </resources>

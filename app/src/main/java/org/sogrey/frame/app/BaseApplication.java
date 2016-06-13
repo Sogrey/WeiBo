@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import org.sogrey.weibo.BuildConfig;
+import org.xutils.x;
 
 /**
  * 全局管理类;
@@ -41,12 +42,15 @@ public class BaseApplication extends Application {
         sInstance=this;
         applicationContext=this.getApplicationContext();
 
+        x.Ext.init(this);
+        x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
+
         // 极光
         //		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
         //		JPushInterface.init(this); // 初始化 JPush
 
-        if (!BuildConfig.DEBUG)
-            CrashHandler.getInstance().init(applicationContext);// 初始化异常监控
+//        if (!BuildConfig.DEBUG)
+//            CrashHandler.getInstance().init(applicationContext);// 初始化异常监控
     }
 
     @Override

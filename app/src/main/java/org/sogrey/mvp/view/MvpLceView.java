@@ -10,7 +10,7 @@ package org.sogrey.mvp.view;
 
 /**
  * 用于网络请求时，等待提示及视图的显示、数据的加载
- * The interface Mvp lce view.
+ * The interface Mvp LCE(Loading,Content,Error) view.
  * Created by Sogrey on 06.09.2016
  *
  * @param <M>

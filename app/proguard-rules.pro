@@ -59,6 +59,9 @@
 -dontwarn  org.xmlpull.v1.**
 -dontwarn  org.ksoap2.**
 -dontwarn  org.kobjects.**
+#-libraryjars libs/xUtils-3.1.14.jar
+-keep class com.lidroid.** { *; }
+-keepattributes Signature
 
 #-keep class * extends java.lang.annotation.Annotation { *; }
 

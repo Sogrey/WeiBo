@@ -19,4 +19,12 @@
     <dimen name="historyscore_tb">10dp</dimen>
     <dimen name="delayering_space">4dp</dimen>
     <dimen name="minHeight">45dp</dimen>
+
+    <dimen name="space_1dip">1dp</dimen>
+    <dimen name="tabbar_height">48dp</dimen>
+    <dimen name="nav_height">45dp</dimen>
+    <dimen name="dip_12">12dp</dimen>
+    <dimen name="dip_10">10dp</dimen>
+
+
 </resources>

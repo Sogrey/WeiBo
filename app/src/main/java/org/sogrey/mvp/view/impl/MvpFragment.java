@@ -8,8 +8,8 @@
 
 package org.sogrey.mvp.view.impl;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import org.sogrey.mvp.presenter.MvpPresenter;
 import org.sogrey.mvp.view.MvpView;
