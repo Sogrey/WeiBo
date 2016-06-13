@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016 Sogrey [https://github.com/Sogrey/WeiBo].
+  ~ IDE:Android Studio 2.1.1 + JDK 1.8
+  ~ QQ:408270653
+  ~ 仅供学习交流
+  ~ Copyright (c) Sogrey, All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/lyt_root_nav_default"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/nav_height"
+              android:background="@drawable/navigation_background"
+              android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/txt_nav_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dip_12"
+            android:gravity="center"
+            android:text="返回"
+            android:textColor="@color/txt_orange_color"
+            android:textSize="@dimen/frontsize_small"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/txt_nav_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dip_12"
+            android:layout_marginRight="@dimen/dip_12"
+            android:gravity="center"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="@dimen/frontsize_normal"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/txt_nav_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dip_12"
+            android:gravity="center"
+            android:text="操作"
+            android:textColor="@color/txt_orange_color"
+            android:textSize="@dimen/frontsize_small"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
+
+</LinearLayout>

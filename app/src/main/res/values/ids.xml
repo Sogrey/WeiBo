@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016 Sogrey [https://github.com/Sogrey/WeiBo].
+  ~ IDE:Android Studio 2.1.1 + JDK 1.8
+  ~ QQ:408270653
+  ~ 仅供学习交流
+  ~ Copyright (c) Sogrey, All rights reserved.
+  -->
+
+<resources>
+    <item name="img_tabbar_indicator" type="id"></item>
+    <item name="txt_tabbar_indicator" type="id"></item>
+    <item name="txt_toolsbar_search" type="id"></item>
+    <item name="txt_toolsbar_more" type="id"></item>
+</resources>
