@@ -14,11 +14,11 @@ MVP代表Model，View和Presenter。
 
 MVC:`View`、 `Controller`and `Model`<br/>
 
-![MVC](https://github.com/Sogrey/WeiBo/extra/20150608102446102.jpg)<br/>
+![MVC](https://raw.githubusercontent.com/Sogrey/WeiBo/master/extra/20150608102446102.jpg.png)<br/>
 
 MVP:`Model`、`View`和`Presenter`<br/>
 
-![MVP](https://github.com/Sogrey/WeiBo/extra/20150608102447103.jpg)<br/>
+![MVP](https://raw.githubusercontent.com/Sogrey/WeiBo/master/extra/20150608102447103.jpg.png)<br/>
 
 在MVC框架中，View是可以直接读取Model模型中的数据的，Model模型数据发生改变是会通知View数据显示发生相应的改变。而在MVP中Model和View之间的没有任何联系，是两个完全独立的模块，当Model模型发生数据改变时，通过Presenter通知View视图发生相应的UI改变。
 
