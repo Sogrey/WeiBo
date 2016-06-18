@@ -14,5 +14,5 @@ import org.sogrey.mvp.view.MvpView;
  * 实现类（适配器模式）
  * Created by Sogrey on 2016/6/9.
  */
-public abstract class MvpBaseView implements MvpView {
+public interface MvpBaseView extends MvpView {
 }

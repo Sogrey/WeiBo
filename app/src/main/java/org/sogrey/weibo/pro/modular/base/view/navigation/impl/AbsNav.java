@@ -71,7 +71,7 @@ public abstract class AbsNav<P extends AbsNav.Builder.NavParam> implements INav 
             viewGroup.removeView(contentView);
         }
         //重新绑定视图
-        param.parent.addView(contentView);
+        param.parent.addView(contentView,0);
     }
     
 

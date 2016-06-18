@@ -13,9 +13,9 @@ import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
 
-import org.sogrey.frame.activity.base.ActivityManager;
 import org.sogrey.frame.global.AppConstans;
 import org.sogrey.frame.utils.FileUtil;
+import org.sogrey.mvp.view.manager.ActivityManager;
 
 import java.io.File;
 import java.io.FileOutputStream;

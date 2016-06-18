@@ -10,7 +10,10 @@ package org.sogrey.weibo.pro.modular.base.model;
 
 import android.content.Context;
 
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+
 import org.sogrey.mvp.model.impl.MvpBaseModel;
+import org.sogrey.weibo.http.weibo.AccessTokenKeeper;
 
 /**
  * 本项目的MVP-Model
@@ -18,27 +21,21 @@ import org.sogrey.mvp.model.impl.MvpBaseModel;
  */
 public abstract class MyBaseModel extends MvpBaseModel {
 
-    /**
-     * The  context.
-     */
-    private Context mContext;
+    private Context context;
 
-    /**
-     * Instantiates a new  base model.
-     *
-     * @param context
-     *         the context
-     */
+
+    private Oauth2AccessToken mAccessToken;
+
     public MyBaseModel(Context context) {
-        this.mContext=context;
+        this.context=context;
+        mAccessToken=AccessTokenKeeper.readAccessToken(context);
     }
 
-    /**
-     * Gets context.
-     *
-     * @return the context
-     */
+    public Oauth2AccessToken getmAccessToken() {
+        return mAccessToken;
+    }
+
     public Context getContext() {
-        return this.mContext;
+        return context;
     }
 }

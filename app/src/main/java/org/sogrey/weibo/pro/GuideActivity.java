@@ -8,6 +8,7 @@
 
 package org.sogrey.weibo.pro;
 
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -17,8 +18,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.sogrey.frame.activity.base.BaseActivity;
 import org.sogrey.frame.views.CircleIndicator;
+import org.sogrey.mvp.view.base.BaseActivity;
 import org.sogrey.weibo.R;
 
 import java.util.ArrayList;
@@ -41,7 +42,8 @@ public class GuideActivity extends BaseActivity {
     private List<ImageView> mImageViewList;
 
     @Override
-    protected void init() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         //准备布局文件
         setContentView(R.layout.activity_guide);
         //初始化View控件

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/NineGridView/NineGridView.iml" filepath="$PROJECT_DIR$/NineGridView/NineGridView.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeiBo.iml" filepath="$PROJECT_DIR$/WeiBo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/glide3.7.0/glide3.7.0.iml" filepath="$PROJECT_DIR$/glide3.7.0/glide3.7.0.iml" />
     </modules>
   </component>
 </project>

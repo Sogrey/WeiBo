@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright (c) 2016 Sogrey [https://github.com/Sogrey/WeiBo].
+  ~ IDE:Android Studio 2.1.1 + JDK 1.8
+  ~ QQ:408270653
+  ~ 仅供学习交流
+  ~ Copyright (c) Sogrey, All rights reserved.
+  -->
+
+<resources>
+    <string name="app_name">Glide3.7.0</string>
+</resources>

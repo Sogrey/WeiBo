@@ -101,5 +101,5 @@ public abstract class MyBaseFragment<P extends MyBasePresenter> extends MvpFragm
      * <br/>
      * Created by Sogrey on 06.11.2016 <br/>
      */
-    protected void initDatas() {}
+    public void initDatas() {}
 }

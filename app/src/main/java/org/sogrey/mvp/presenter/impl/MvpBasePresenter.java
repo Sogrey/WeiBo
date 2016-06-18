@@ -28,4 +28,8 @@ public class MvpBasePresenter<V extends MvpView> implements MvpPresenter<V> {
     public void detachView() {
         this.view=null;
     }
+
+    public V getView() {
+        return view;
+    }
 }

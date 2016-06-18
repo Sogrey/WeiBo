@@ -18,5 +18,7 @@
     <color name="tabbar_textcolor_normal">#847D7D</color>
     <color name="tabbar_textcolor_pressed">@color/app_text_orage_deep_color</color>
     <color name="txt_orange_color">#fc852a</color>
+    <color name="home_item_color">#DEE1E3</color>
+    <color name="line_color">#ECECEC</color>
 
 </resources>

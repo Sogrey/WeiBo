@@ -10,8 +10,11 @@ package org.sogrey.weibo.pro.modular.base.presenter;
 
 import android.content.Context;
 
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+
 import org.sogrey.mvp.presenter.impl.MvpBasePresenter;
 import org.sogrey.mvp.view.MvpView;
+import org.sogrey.weibo.http.weibo.AccessTokenKeeper;
 
 /**
  * 本项目的Mvp-Presenter
@@ -21,7 +24,8 @@ import org.sogrey.mvp.view.MvpView;
  *         the type parameter
  */
 public class MyBasePresenter<V extends MvpView> extends MvpBasePresenter<V> {
-
+    
+    private final Oauth2AccessToken mAccessToken;
     /**
      * The context.
      */
@@ -35,6 +39,11 @@ public class MyBasePresenter<V extends MvpView> extends MvpBasePresenter<V> {
      */
     public MyBasePresenter(Context context) {
         this.mContext=context;
+        mAccessToken=AccessTokenKeeper.readAccessToken(context);
+    }
+
+    public Oauth2AccessToken getmAccessToken() {
+        return mAccessToken;
     }
 
     /**

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeiBo</string>
+    <string name="app_name">苏苏.微博</string>
 
     <string name="hint_click_into_app">点击进入</string>
 
@@ -17,7 +17,9 @@
     <string name="nav_message_text_center">@string/tabbar_text_message</string>
     <string name="nav_message_text_right">雷达</string>
 
-
+    <string name="status_forword_text">转发</string>
+    <string name="status_comment_text">评论</string>
+    <string name="status_like_text">点赞</string>
 
 
 </resources>
