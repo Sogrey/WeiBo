@@ -49,8 +49,8 @@ public class BaseApplication extends Application {
         //		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
         //		JPushInterface.init(this); // 初始化 JPush
 
-//        if (!BuildConfig.DEBUG)
-//            CrashHandler.getInstance().init(applicationContext);// 初始化异常监控
+        if (!BuildConfig.DEBUG)
+            CrashHandler.getInstance().init(applicationContext);// 初始化异常监控
     }
 
     @Override

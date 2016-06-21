@@ -187,8 +187,13 @@ public class HomeAdapter extends BaseRecyclerAdapter<ViewHolder> {
             }
             iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
             iv.setBackgroundColor(context.getResources().getColor((android.R.color.transparent)));
-            String url=getUrl(i);
-            GlideUtils.setImage(context,iv,getUrl(i));
+            String url=getUrl(i).replace("thumbnail","bmiddle");
+            GlideUtils.setImage(context,iv,url);
+            //            "thumbnail_pic": "http://ww4.sinaimg
+            // .cn/thumbnail/3bf0abaajw1f4wve0kluvj20qo0qodj9.jpg",
+            //            "bmiddle_pic": "http://ww4.sinaimg
+            // .cn/bmiddle/3bf0abaajw1f4wve0kluvj20qo0qodj9.jpg",
+            //            "original_pic": "http://ww4.sinaimg.cn/large/3bf0abaajw1f4wve0kluvj20qo0qodj9.jpg",
             //            Picasso.with(context).load(getUrl(i)).placeholder(new ColorDrawable(Color.parseColor("#f5f5f5"))).into(iv);
             if (!TextUtils.isEmpty(url)) {
                 iv.setTag(url);

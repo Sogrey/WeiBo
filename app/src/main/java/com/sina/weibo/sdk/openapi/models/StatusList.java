@@ -46,7 +46,8 @@ public class StatusList {
         if (TextUtils.isEmpty(jsonString)) {
             return null;
         }
-        
+
+
         StatusList statuses=new StatusList();
         try {
             JSONObject jsonObject=new JSONObject(jsonString);

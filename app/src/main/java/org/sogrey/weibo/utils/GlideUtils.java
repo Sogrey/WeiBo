@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.cache.DiskCache;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
 import com.bumptech.glide.load.engine.cache.SafeKeyGenerator;
 
+import org.sogrey.frame.utils.FileUtil;
 import org.sogrey.weibo.R;
 
 import java.io.File;
@@ -27,9 +28,10 @@ import java.io.File;
  */
 public class GlideUtils {
 
-    private static final String _PREFFIX=Environment.getExternalStorageDirectory()
-                                                    .getAbsolutePath()+"/app/GlideCache/";
     private static final String _SUFFIX =".0";
+    private static       String _PREFFIX=
+            Environment.getExternalStorageDirectory()
+                       .getAbsolutePath()+"/app/GlideCache/";
 
     /**
      * 為ImageView設置圖片
@@ -66,7 +68,7 @@ public class GlideUtils {
         //                new ExternalCacheDiskCacheFactory(context, "GlideCache", 20 * 1024 *
         // 1024);
         //        builder.setDiskCache(externalCacheDiskCacheFactory);
-
+        _PREFFIX=FileUtil.getCacheDownloadDir(context)+"/GlideCache/";
         if (!Glide.isSetup()) {
             GlideBuilder gb=new GlideBuilder(context);
             DiskCache dlw=DiskLruCacheWrapper.get(new
@@ -79,7 +81,8 @@ public class GlideUtils {
         Glide.with(context).load(url).placeholder(defualtResId).into(imageView);
     }
 
-    public static String getLocalPathByUrl(String url) {
+    public static String getLocalPathByUrl(Context context,String url) {
+        _PREFFIX=FileUtil.getCacheDownloadDir(context)+"/GlideCache/";
         return _PREFFIX+SafeKeyGenerator.getLocalPathByUrl(url)+_SUFFIX;
     }
 }

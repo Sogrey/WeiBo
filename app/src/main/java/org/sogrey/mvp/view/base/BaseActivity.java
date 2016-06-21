@@ -342,15 +342,15 @@ public class BaseActivity extends AppCompatActivity {
             public void run() {
 
                 startActivity(intent);
+                if (listener!=null) {
+                    listener.post();
+                }
                 if (animIn!=0&&animOut!=0) {
                     try {
                         overridePendingTransition(animIn,animOut);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
-                if (listener!=null) {
-                    listener.post();
                 }
             }
         },delay<0 ? DELAY : delay);
@@ -506,15 +506,15 @@ public class BaseActivity extends AppCompatActivity {
             public void run() {
 
                 startActivityForResult(intent,requestCode);
+                if (listener!=null) {
+                    listener.post();
+                }
                 if (animIn!=0&&animOut!=0) {
                     try {
                         overridePendingTransition(animIn,animOut);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
-                if (listener!=null) {
-                    listener.post();
                 }
             }
         },delay<0 ? DELAY : delay);

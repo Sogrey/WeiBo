@@ -1,21 +1,25 @@
 package org.sogrey.weibo.pro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
+import org.sogrey.mvp.view.base.BaseActivity;
 import org.sogrey.weibo.R;
+import org.sogrey.weibo.pro.modular.base.view.MyFragmentTabHost;
 import org.sogrey.weibo.pro.modular.discover.view.DiscoverFragment;
 import org.sogrey.weibo.pro.modular.home.view.HomeFragment;
 import org.sogrey.weibo.pro.modular.message.view.MessageFragment;
-import org.sogrey.weibo.pro.modular.publish.view.PublishFragment;
+import org.sogrey.weibo.pro.modular.publish.view.PublishTextActivity;
+import org.sogrey.weibo.pro.modular.publish.view.pop.PublishWindow;
 import org.sogrey.weibo.pro.modular.user.view.UserFragment;
 
 import java.util.ArrayList;
@@ -27,8 +31,15 @@ import java.util.List;
  * <br/>
  * Created by Sogrey on 06.11.2016 <br/>
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
+    private MyFragmentTabHost mFragmentTabHost;
+    private PublishWindow     publishWindow;
+    /**
+     * 当前选中的Tab
+     * The Index.
+     */
+    private int index=0;
     /**
      * 保存Tab也基本信息.
      */
@@ -44,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initTabViews() {
         //绑定&加载视图
-        FragmentTabHost mFragmentTabHost=(FragmentTabHost)findViewById(android.R.id.tabhost);
+        mFragmentTabHost=(MyFragmentTabHost)findViewById(android.R.id.tabhost);
         //指定Fragment绑定的布局
         mFragmentTabHost.setup(this,getSupportFragmentManager(),android.R.id.tabcontent);
         //去除TabWidget 分割线
@@ -69,16 +80,51 @@ public class MainActivity extends AppCompatActivity {
         mFragmentTabHost.setOnTabChangedListener(new OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                for (TabItem tab : mTabItems) {
-                    if (tab.getTabText().equals(tabId)) {
-                        tab.setSelected(true);
+                //                for (TabItem tab : mTabItems) {
+                //                    if (tab.getTabText().equals(tabId)) {
+                //                        tab.setSelected(true);
+                //                    } else {
+                //                        tab.setSelected(false);
+                //                    }
+                //                }
+
+                if (TextUtils.isEmpty(tabId)) {
+                    showPopupWindow(2);
+                    mFragmentTabHost.setCurrentTab(index);
+                    return;
+                }
+                //重置Tab样式
+                for (int i=0;i<mTabItems.size();i++) {
+                    TabItem tabItem=mTabItems.get(i);
+
+                    if (tabId.equals(tabItem.getTabText())) {
+                        //选中设置为选中壮体啊
+                        tabItem.setSelected(true);
+                        index=i;
                     } else {
-                        tab.setSelected(false);
+                        //没有选择Tab样式设置为正常
+                        tabItem.setSelected(false);
                     }
                 }
             }
         });
 
+    }
+
+    private void showPopupWindow(int i) {
+        View v=mFragmentTabHost.getTabWidget()
+                               .getChildAt(i);
+        if (publishWindow==null) {
+            publishWindow=new PublishWindow(this);
+            publishWindow.init();
+            publishWindow.setOnClickSendTextListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,PublishTextActivity.class));
+                }
+            });
+        }
+        publishWindow.showMoreWindow(this,v);
     }
 
     /**
@@ -110,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.tabbar_compose_button_hightlighted,
                 0,
                 R.layout.tabbar_publish_indicator,
-                PublishFragment.class
+                null
         ));
         mTabItems.add(new TabItem(
                 R.mipmap.tabbar_discover,
@@ -127,6 +173,15 @@ public class MainActivity extends AppCompatActivity {
                 UserFragment.class
         ));
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode,KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK) {
+            finishThis();
+            return true;
+        }
+        return super.onKeyDown(keyCode,event);
     }
 
     /**

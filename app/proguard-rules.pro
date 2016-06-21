@@ -62,6 +62,8 @@
 #-libraryjars libs/xUtils-3.1.14.jar
 -keep class com.lidroid.** { *; }
 -keepattributes Signature
+#-libraryjars libs/weiboSDKCore_3.1.4.jar
+-keep class com.sina.**{ *; }
 
 #-keep class * extends java.lang.annotation.Annotation { *; }
 

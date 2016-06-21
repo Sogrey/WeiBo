@@ -1,0 +1,173 @@
+<!--
+  ~ Copyright (c) 2016 Sogrey [https://github.com/Sogrey/WeiBo].
+  ~ IDE:Android Studio 2.1.1 + JDK 1.8
+  ~ QQ:408270653
+  ~ 仅供学习交流
+  ~ Copyright (c) Sogrey, All rights reserved. 
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/uxin_call_sdk_incall_backgroud_bg">
+
+    <ImageView
+        android:id="@+id/iv_post_copyright"
+        android:layout_width="240dp"
+        android:layout_height="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_send_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_post_copyright"
+        android:layout_marginLeft="@dimen/dimen_30_dip"
+        android:layout_marginTop="@dimen/dimen_40_dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_70_dip"
+            android:layout_height="@dimen/dimen_70_dip"
+            android:background="@mipmap/tabbar_compose_idea"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5_dip"
+            android:text="@string/publish_send_text_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_send_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_post_copyright"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_40_dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_70_dip"
+            android:layout_height="@dimen/dimen_70_dip"
+            android:background="@mipmap/tabbar_compose_photo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5_dip"
+            android:text="@string/publish_send_picture_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_send_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/iv_post_copyright"
+        android:layout_marginRight="@dimen/dimen_30_dip"
+        android:layout_marginTop="@dimen/dimen_40_dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_70_dip"
+            android:layout_height="@dimen/dimen_70_dip"
+            android:background="@mipmap/tabbar_compose_headlines"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5_dip"
+            android:text="@string/publish_send_text_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_send_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_send_video"
+        android:layout_marginLeft="@dimen/dimen_30_dip"
+        android:layout_marginTop="@dimen/dimen_30_dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_70_dip"
+            android:layout_height="@dimen/dimen_70_dip"
+            android:background="@mipmap/tabbar_compose_lbs"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5_dip"
+            android:text="@string/publish_send_voice_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_send_moderated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_send_picture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_30_dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_70_dip"
+            android:layout_height="@dimen/dimen_70_dip"
+            android:background="@mipmap/tabbar_compose_review"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5_dip"
+            android:text="@string/publish_send_moderated_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_send_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/ll_send_text"
+        android:layout_marginRight="@dimen/dimen_30_dip"
+        android:layout_marginTop="@dimen/dimen_30_dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_70_dip"
+            android:layout_height="@dimen/dimen_70_dip"
+            android:background="@mipmap/tabbar_compose_music"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5_dip"
+            android:text="@string/publish_send_link_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyt_close"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabbar_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/imgbtn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:src="@mipmap/tabbar_compose_background_icon_close"/>
+    </LinearLayout>
+
+</RelativeLayout>

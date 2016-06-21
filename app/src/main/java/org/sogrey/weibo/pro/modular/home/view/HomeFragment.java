@@ -69,7 +69,9 @@ public class HomeFragment extends MyBaseMapFragment {
             @Override
             public void onResult(String data,String errorMessage) {
                 if (!TextUtils.isEmpty(data)) {
-                    resetContentView(getContentView());
+                    //                    resetContentView(getContentView());
+                    ToastUtil.showToast(getContext(),"授权成功");
+                    loadWeiboData(true);
                 }
             }
         });

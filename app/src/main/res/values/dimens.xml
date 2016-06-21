@@ -26,6 +26,9 @@
     <dimen name="dip_12">12dp</dimen>
     <dimen name="dip_10">10dp</dimen>
 
+    <dimen name="dimen_70_dip">70dp</dimen>
+    <dimen name="dimen_40_dip">40dp</dimen>
+    <dimen name="dimen_30_dip">30dp</dimen>
     <dimen name="dimen_20_dip">20dp</dimen>
     <dimen name="dimen_16_dip">16dp</dimen>
     <dimen name="dimen_12_dip">12dp</dimen>

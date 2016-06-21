@@ -21,5 +21,17 @@
     <string name="status_comment_text">评论</string>
     <string name="status_like_text">点赞</string>
 
+    <string name="publish_send_video_text">发视频</string>
+    <string name="publish_send_picture_text">图片/视频</string>
+    <string name="publish_send_text_text">头条文章</string>
+    <string name="publish_send_voice_text">签到</string>
+    <string name="publish_send_moderated_text">点评</string>
+    <string name="publish_send_link_text">音乐</string>
+    <string name="publish_send_cancel_text">取消</string>
+
+    <string name="compose_cancel_text">取消</string>
+    <string name="compose_send_weibo_text">发微博</string>
+    <string name="compose_send_text">发送</string>
+
 
 </resources>
