@@ -23,7 +23,7 @@ public interface Constants {
     /**
      * The constant App_Secret.
      */
-    public static final String App_Secret    ="72413a8665961782532190c32ebf71a4";
+    public static final String App_Secret    ="72413a86659***************71a4";
 
     /**
      * 当前 DEMO 应用的回调页，第三方应用可以使用自己的回调页。

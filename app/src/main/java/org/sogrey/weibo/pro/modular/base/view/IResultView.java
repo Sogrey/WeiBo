@@ -6,19 +6,16 @@
  * Copyright (c) Sogrey, All rights reserved.
  */
 
-/**
- *
- */
-package org.sogrey.weibo.http.framework;
+package org.sogrey.weibo.pro.modular.base.view;
+
+import org.sogrey.mvp.view.MvpView;
 
 import java.util.List;
 
 /**
- * 返回結果監聽
- *
- * @author Sogrey
+ * Created by Sogrey on 2016/6/27.
  */
-public interface IResultCallback {
+public interface IResultView extends MvpView {
 
     void onStart(int tag);
 

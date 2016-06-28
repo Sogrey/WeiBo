@@ -29,6 +29,9 @@ import java.io.File;
 public class GlideUtils {
 
     private static final String _SUFFIX =".0";
+    /**
+     * Glide 图片默认缓存地址
+     */
     private static       String _PREFFIX=
             Environment.getExternalStorageDirectory()
                        .getAbsolutePath()+"/app/GlideCache/";
@@ -60,19 +63,11 @@ public class GlideUtils {
      *         默認顯示圖片資源id，默認 -1為應用LOGO圖標
      */
     public static void setImage(Context context,ImageView imageView,String url,int defualtResId) {
-        //        GlideBuilder builder = new GlideBuilder(context);
-        ////        InternalCacheDiskCacheFactory internalCacheDiskCacheFactory
-        ////                = new InternalCacheDiskCacheFactory(this, "GlideCache", 20 * 1024 *
-        // 1024);
-        //        ExternalCacheDiskCacheFactory externalCacheDiskCacheFactory =
-        //                new ExternalCacheDiskCacheFactory(context, "GlideCache", 20 * 1024 *
-        // 1024);
-        //        builder.setDiskCache(externalCacheDiskCacheFactory);
+        //Glide 图片实际缓存地址
         _PREFFIX=FileUtil.getCacheDownloadDir(context)+"/GlideCache/";
         if (!Glide.isSetup()) {
-            GlideBuilder gb=new GlideBuilder(context);
-            DiskCache dlw=DiskLruCacheWrapper.get(new
-                                                          File(_PREFFIX),250*1024*1024);
+            GlideBuilder gb =new GlideBuilder(context);
+            DiskCache    dlw=DiskLruCacheWrapper.get(new File(_PREFFIX),250*1024*1024);
             gb.setDiskCache(dlw);
             Glide.setup(gb);
 

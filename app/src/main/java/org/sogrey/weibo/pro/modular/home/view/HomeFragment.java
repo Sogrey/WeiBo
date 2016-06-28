@@ -17,18 +17,25 @@ import android.view.ViewGroup;
 
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
+import com.socks.library.KLog;
 
 import org.sogrey.frame.utils.ToastUtil;
 import org.sogrey.mvp.view.impl.ResultView;
 import org.sogrey.weibo.R;
+import org.sogrey.weibo.http.framework.IResultCallback;
+import org.sogrey.weibo.http.framework.impl.xUtils.xUtilsCommand;
+import org.sogrey.weibo.http.framework.impl.xUtils.xUtilsRequestParam;
+import org.sogrey.weibo.http.weibo.AccessTokenKeeper;
+import org.sogrey.weibo.http.weibo.WBHttp.WeiBoHttpTags;
+import org.sogrey.weibo.pro.modular.base.view.IResultView;
 import org.sogrey.weibo.pro.modular.base.view.MyBaseMapFragment;
 import org.sogrey.weibo.pro.modular.base.view.navigation.impl.DefaultNav;
 import org.sogrey.weibo.pro.modular.home.presenter.HomePresenter;
 import org.sogrey.weibo.pro.modular.home.view.adapter.HomeAdapter;
 import org.sogrey.weibo.pro.modular.user.presenter.LoginPresenter;
-import org.sogrey.weibo.pro.modular.user.view.base.LoginView;
 import org.sogrey.weibo.views.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -43,7 +50,6 @@ public class HomeFragment extends MyBaseMapFragment {
     /**
      * The home presenter.
      */
-    private HomePresenter  mHomePresenter;
     private LoginPresenter loginPresenter;
     private HomePresenter  homePresenter;
 
@@ -55,7 +61,52 @@ public class HomeFragment extends MyBaseMapFragment {
     private List<Status> statusList=new ArrayList<Status>();
 
     private boolean isDownRefresh;
-    
+    private IResultView _result=new IResultView() {
+        @Override
+        public void onStart(int tag) {
+
+        }
+
+        @Override
+        public void onSuccess(int tag,String result) {
+            switch (tag) {
+                case WeiBoHttpTags.WEIBO_LOGIN: {//登录
+                    if (!TextUtils.isEmpty(result)) {
+                        ToastUtil.showToast(getContext(),"登录成功");
+                        loadWeiboData(true);
+                    }
+                }
+                break;
+            }
+        }
+
+        @Override
+        public void onError(int tag,String error) {
+            switch (tag) {
+                case WeiBoHttpTags.WEIBO_LOGIN: {//登录
+                    if (!TextUtils.isEmpty(error)) {
+                        ToastUtil.showToast(getContext(),error);
+                    }
+                }
+                break;
+            }
+        }
+
+        @Override
+        public void onCancelled(int tag) {
+        }
+
+        @Override
+        public <T> void onParseBean(int tag,T bean) {
+
+        }
+
+        @Override
+        public <T> void onParseListBean(int tag,List<T> beans) {
+
+        }
+    };
+
     @Override
     protected int bindLayoutId() {
         return R.layout.fragment_home;
@@ -63,9 +114,19 @@ public class HomeFragment extends MyBaseMapFragment {
 
     @Override
     public void bindPresenter() {
+        bindLoginPresenter();
+        bindHomePresenter();
+        Oauth2AccessToken token=AccessTokenKeeper.readAccessToken(getContext());
+        if (!TextUtils.isEmpty(token.getRefreshToken())) {
+            loadWeiboData(true);
+        }
+    }
+
+    private void bindLoginPresenter() {
         //绑定Presenter
         loginPresenter=new LoginPresenter(getContext());
-        putPresenter(loginPresenter,new LoginView<String>() {
+        putPresenter(
+                loginPresenter,/*new LoginView<String>() {
             @Override
             public void onResult(String data,String errorMessage) {
                 if (!TextUtils.isEmpty(data)) {
@@ -74,8 +135,12 @@ public class HomeFragment extends MyBaseMapFragment {
                     loadWeiboData(true);
                 }
             }
-        });
+        }*/
+                _result
+        );
+    }
 
+    private void bindHomePresenter() {
         homePresenter=new HomePresenter(getContext());
         putPresenter(homePresenter,new ResultView<StatusList>() {
             @Override
@@ -130,7 +195,56 @@ public class HomeFragment extends MyBaseMapFragment {
                .setOnLeftTextClickListener(new OnClickListener() {
                    @Override
                    public void onClick(View v) {
-                       ToastUtil.showToast(getContext(),"注册");
+                       xUtilsCommand command=xUtilsCommand.getInstance();
+                       xUtilsRequestParam param=new xUtilsRequestParam("https://api.weibo"
+                                                                       +".com/2/statuses/public_timeline.json");
+
+                       //                       必选 	类型及范围 	说明
+                       //                       access_token 	true 	string
+                       // 采用OAuth授权方式为必填参数，OAuth授权后获得。
+                       //                       count 	false 	int 	单页返回的记录条数，默认为50。
+                       //                       page 	false 	int 	返回结果的页码，默认为1。
+                       //                       base_app 	false 	int
+                       // 是否只获取当前应用的数据。0为否（所有数据），1为是（仅当前应用），默认为0。
+                       param.put("access_token",AccessTokenKeeper.readAccessToken(getContext())
+                                                                 .getToken());
+                       param.put("count",5);
+                       param.put("page",1);
+                       param.put("base_app",0);
+                       command.get(123,param,new IResultCallback() {
+                           @Override
+                           public void onStart(int tag) {
+                               KLog.e("","开始请求>>>>>"+tag);
+                           }
+
+                           @Override
+                           public void onSuccess(int tag,String result) {
+                               //                               KLog.e(result);
+                               KLog.json(tag+"",result);
+                               //                               ToastUtil.showToast(getContext(),
+                               // result);
+                           }
+
+                           @Override
+                           public void onError(int tag,String error) {
+
+                           }
+
+                           @Override
+                           public void onCancelled(int tag) {
+
+                           }
+
+                           @Override
+                           public <T> void onParseBean(int tag,T bean) {
+
+                           }
+
+                           @Override
+                           public <T> void onParseListBean(int tag,List<T> beans) {
+
+                           }
+                       });
                    }
                })
                .setOnRightTextClickListener(new OnClickListener() {
@@ -139,6 +253,7 @@ public class HomeFragment extends MyBaseMapFragment {
                        loginPresenter.login();
                    }
                }).create();
+
     }
 
     private void initRefreshView(View contentView) {
@@ -178,9 +293,9 @@ public class HomeFragment extends MyBaseMapFragment {
         });
     }
 
-
     private void loadWeiboData(boolean isDownRefresh) {
         this.isDownRefresh=isDownRefresh;
+        bindHomePresenter();
         homePresenter.getPublicWeiboList(isDownRefresh);
     }
 }

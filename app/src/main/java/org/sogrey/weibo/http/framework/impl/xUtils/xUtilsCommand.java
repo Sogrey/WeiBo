@@ -11,20 +11,26 @@
  */
 package org.sogrey.weibo.http.framework.impl.xUtils;
 
+import com.socks.library.KLog;
+
 import org.sogrey.weibo.http.framework.IResultCallback;
 import org.xutils.HttpManager;
 import org.xutils.common.Callback;
 import org.xutils.common.Callback.Cancelable;
+import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * @author Sogrey
  */
 public class xUtilsCommand {
+
+    private static final String TAG="xUtilsCommand";
 
     /** 单例模式 对象 */
     private static xUtilsCommand sInstance;
@@ -39,14 +45,6 @@ public class xUtilsCommand {
         if (xUtilsCommandList==null) {
             xUtilsCommandList=new HashMap<>();
         }
-        // xUtilsRequestParam param = new xUtilsRequestParam(
-        // "https://www.baidu.com");
-        // RequestParams params = param.getRequestParam();
-        // if (TextUtils.isEmpty(params.getUri())) {
-        //
-        // }
-        // get(12,param,);
-        // Callback.Cancelable cancelable = mHttpManager.get(arg0, arg1)
     }
 
     /**
@@ -72,8 +70,19 @@ public class xUtilsCommand {
             final int tag,xUtilsRequestParam xParam,
             final IResultCallback callback
     ) {
-        Cancelable    cancelable=null;
-        RequestParams params    =xParam.getRequestParam();
+        callback.onStart(tag);
+        Cancelable          cancelable=null;
+        final RequestParams params    =xParam.getRequestParam();
+        KLog.e(TAG,"Url=="+params.getUri());
+        List<KeyValue> paramsList=params.getStringParams();
+        if (paramsList!=null&&paramsList.size()>0) {
+            KLog.e(TAG,"↓↓↓↓↓↓ [GET请求,tag="+tag+",请求参数如下:] ↓↓↓↓↓↓");
+            for (KeyValue keyValue : paramsList) {
+                KLog.e(TAG,keyValue.key+"="+keyValue.value);
+            }
+            KLog.e(TAG,"↑↑↑↑↑↑ [GET请求,tag="+tag+",请求参数如上:] ↑↑↑↑↑↑");
+        }
+
         if (params!=null) {
             cancelable=mHttpManager.get(
                     params,
@@ -101,7 +110,7 @@ public class xUtilsCommand {
 
                         @Override
                         public void onFinished() {
-                            // nothing to do.
+                            cancleCommand(params.getUri());
                         }
                     }
             );
@@ -115,8 +124,17 @@ public class xUtilsCommand {
             final int tag,xUtilsRequestParam xParam,
             final IResultCallback callback
     ) {
-        Cancelable    cancelable=null;
-        RequestParams params    =xParam.getRequestParam();
+        Cancelable          cancelable=null;
+        final RequestParams params    =xParam.getRequestParam();
+        KLog.e(TAG,"Url=="+params.getUri());
+        List<KeyValue> paramsList=params.getStringParams();
+        if (paramsList!=null&&paramsList.size()>0) {
+            KLog.e(TAG,"↓↓↓↓↓↓ [POST请求,tag="+tag+",请求参数如下:] ↓↓↓↓↓↓");
+            for (KeyValue keyValue : paramsList) {
+                KLog.e(TAG,keyValue.key+"="+keyValue.value);
+            }
+            KLog.e(TAG,"↑↑↑↑↑↑ [POST请求,tag="+tag+",请求参数如上:] ↑↑↑↑↑↑");
+        }
         if (params!=null) {
             cancelable=mHttpManager.post(
                     params,
@@ -144,7 +162,7 @@ public class xUtilsCommand {
 
                         @Override
                         public void onFinished() {
-                            // nothing to do.
+                            cancleCommand(params.getUri());
                         }
                     }
             );
@@ -158,6 +176,7 @@ public class xUtilsCommand {
         Cancelable cancelable=xUtilsCommandList.get(uri);
         if (cancelable!=null) {
             cancelable.cancel();
+            xUtilsCommandList.remove(uri);
             System.out.println("cancle >>  "+uri);
         }
     }
@@ -168,5 +187,6 @@ public class xUtilsCommand {
             cancelable.cancel();
             System.out.println("cancle >>  "+entry.getKey());
         }
+        xUtilsCommandList.clear();
     }
 }

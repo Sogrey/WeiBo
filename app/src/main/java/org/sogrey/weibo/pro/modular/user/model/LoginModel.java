@@ -14,7 +14,9 @@ import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 
+import org.sogrey.weibo.http.framework.IResultCallback;
 import org.sogrey.weibo.http.framework.dream.HttpUtils;
+import org.sogrey.weibo.http.weibo.WBHttp.WeiBoHttpCommand;
 import org.sogrey.weibo.http.weibo.WeiboApiConfig;
 import org.sogrey.weibo.pro.modular.base.model.MyBaseModel;
 
@@ -37,22 +39,11 @@ public class LoginModel extends MyBaseModel {
         super(context);
         mContext=context;
     }
-
-    //    public void  login(WeiboAuthListener authListener){
-    //         mAuthListener = authListener;
-    //        // 创建授权认证信息
-    //        mAuthInfo = new AuthInfo(mContext,Constants.APP_KEY,Constants.REDIRECT_URL,Constants
-    //        .SCOPE);
-    //        if (null == mSsoHandler && mAuthInfo != null) {
-    //            mSsoHandler = new SsoHandler((Activity)mContext,mAuthInfo);
-    //        }
-    //        if (mSsoHandler != null) {
-    //            mSsoHandler.authorize(mAuthListener);
-    //        } else {
-    //            LogUtil.e("LoginModel","Please setWeiboAuthInfo(...) for first");
-    //        }
-    //    }
     public void login(HttpUtils.OnHttpResultListener onHttpResultListener) {
         WeiboApiConfig.getInstance().authWebLogin(getContext(),onHttpResultListener);
+    }
+
+    public void login(IResultCallback iResultCallback) {
+        WeiBoHttpCommand.getInstance().login(mContext,iResultCallback);
     }
 }

@@ -45,39 +45,6 @@ public class HomeModel extends MyBaseModel {
     public void getPublicWeiboList(int page,final HttpUtils.OnHttpResultListener
             onHttpResultListener/*final IResultCallback callback*/) {
         // 对statusAPI实例化
-        //        mStatusesAPI.friendsTimeline(0L, 0L, 15, page, false, 0, false,
-        //                                     new RequestListener() {
-        //                                         @Override
-        //                                         public void onComplete(String response) {
-        //                                             if (!TextUtils.isEmpty(response)) {
-        //                                                                     LogUtil.i(TAG,
-        // response);
-        //                                                                     if (response
-        // .startsWith("{\"statuses\"")) {
-        //                                                                         // 调用
-        // StatusList#parse 解析字符串成微博列表对象
-        //                                                                         callback
-        // .onSuccess(0,response);
-        //                                                                         JSONParse
-        // .getInstance()
-        //
-        // .parseBeanInAsyncTask(0,response,StatusList.class,callback);
-        //                                                                         return;
-        //                                                                     }
-        //                                                                 }
-        //                                             callback.onError(0,"解析失败");
-        //                                         }
-        //
-        //                                         @Override
-        //                                         public void onWeiboException(WeiboException e) {
-        //                                             ErrorInfo info= ErrorInfo.parse(e
-        // .getMessage());
-        //                                             callback.onError(0,info.toString());
-        //                                         }
-        //                                     }
-        //        );
-
-        // 对statusAPI实例化
         mStatusesAPI.friendsTimeline(0L,0L,15,page,false,0,false,new RequestListener() {
             @Override
             public void onComplete(String response) {

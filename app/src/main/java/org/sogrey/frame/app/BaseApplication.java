@@ -5,6 +5,8 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.socks.library.KLog;
+
 import org.sogrey.weibo.BuildConfig;
 import org.xutils.x;
 
@@ -44,6 +46,8 @@ public class BaseApplication extends Application {
 
         x.Ext.init(this);
         x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
+
+        KLog.init(true);
 
         // 极光
         //		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志

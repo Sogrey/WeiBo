@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/KLog" />
             <option value="$PROJECT_DIR$/NineGridView" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/glide3.7.0" />
@@ -16,6 +17,7 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/KLog" />
             <option value="$PROJECT_DIR$/NineGridView" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/glide3.7.0" />

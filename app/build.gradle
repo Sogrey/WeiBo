@@ -20,6 +20,10 @@ android {
     dexOptions {
         incremental true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
@@ -31,7 +35,9 @@ dependencies {
     compile 'com.huxq17.xrefreshview:xrefreshview:2.1.9'
     compile 'org.xutils:xutils:3.3.34'
     compile 'com.google.code.gson:gson:2.6.2'
+    //    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
     compile files('libs/weiboSDKCore_3.1.4.jar')
     compile project(':glide3.7.0')
     compile project(':NineGridView')
+    compile project(':KLog')
 }

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/KLog/KLog.iml" filepath="$PROJECT_DIR$/KLog/KLog.iml" />
       <module fileurl="file://$PROJECT_DIR$/NineGridView/NineGridView.iml" filepath="$PROJECT_DIR$/NineGridView/NineGridView.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeiBo.iml" filepath="$PROJECT_DIR$/WeiBo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
